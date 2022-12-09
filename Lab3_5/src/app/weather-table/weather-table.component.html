@@ -1,0 +1,61 @@
+<div id="component-block" style="text-align:center">
+    <div id="input-block">
+        <form (ngSubmit)="getData()">
+            <ul style="list-style-type: none">
+                <li>
+                    <label>Введіть місто:</label>
+                    <input [(ngModel)]="city" type="text" name="cityInput" required/>
+                </li>
+            </ul>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    <div id="main-table" *ngIf="data != null">
+        <div class="table-cell" *ngFor="let item of data | keyvalue" (click)="startPopup($event)">
+            <div class="table-cell-inner" *ngIf="getPropertyCount(item.value) != 2; else inner_obj">
+                <label class="field-name">{{item.key}}</label>
+                <label class="field-value">
+                    {{item.value}}
+                </label>
+            </div>
+            <ng-template #inner_obj>
+                <div *ngFor="let innerItem of item.value | keyvalue">
+                    <div class="table-cell-inner" *ngIf="!isArray(innerItem.value); else array">
+                        <label class="field-name">{{innerItem.key}}</label>
+                        <label class="field-value">
+                            {{innerItem.value}}
+                        </label>
+                    </div>
+                    <ng-template #array>
+                        <div class="table-cell-array">
+                            <label class="field-name-arr">
+                                {{innerItem.key}}
+                            </label>
+                            <br>
+                            <div class="scrollable">
+                                <label class="array-value" *ngFor="let elem of getArray(innerItem.value)">
+                                    {{elem}}
+                                </label>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </ng-template> 
+        </div>
+    </div>  
+</div>
+
+<favourite *ngIf="isFavouriteVisible"></favourite>
+
+<popup>
+    <p class="p-title"><b>Інформація про елемент</b></p>
+    <button class="p-confirm" (click)="addToFavourite()">Додати</button>
+    <div class="p-city">
+        <label>City:</label>
+        <label>{{city}}</label>
+    </div>
+    <br>
+    <div class="p-content" [innerHtml]="htmlElement"></div>
+</popup>
+
+

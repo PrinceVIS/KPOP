@@ -1,0 +1,64 @@
+
+
+<ion-content [fullscreen]="true">
+  <div id="component-block" style="text-align:center">
+    <div id="input-block">
+      <form (ngSubmit)="getData()">
+        <ul style="list-style-type: none">
+            <li>
+                <ion-label>Введіть місто:</ion-label>
+                <input [(ngModel)]="city" type="text" name="cityInput" required/>
+            </li>
+        </ul>
+        <input type="submit" value="Submit"/>
+    </form>
+    </div>
+  
+    <ion-grid id="main-table" *ngIf="data != null">
+      <ion-row class="table-cell" *ngFor="let item of data | keyvalue" (click)="startPopup($event)">
+        <ion-col class="table-cell-inner" *ngIf="getPropertyCount(item.value) != 2; else inner_obj">
+          <ion-label class="field-name">{{item.key}}</ion-label>
+          <ion-label class="field-value">{{item.value}}</ion-label>
+        </ion-col>
+        <ng-template #inner_obj>
+          <ion-col *ngFor="let innerItem of item.value | keyvalue">
+            <div class="table-cell-inner" *ngIf="!isArray(innerItem.value); else array">
+              <ion-label class="field-name">{{innerItem.key}}</ion-label>
+              <ion-label class="field-value">
+                  {{innerItem.value}}
+              </ion-label>
+            </div>
+            <ng-template #array>
+              <div class="table-cell-array">
+                  <ion-label class="field-name-arr">
+                      {{innerItem.key}}
+                  </ion-label>
+                  <br>
+                  <div class="scrollable">
+                      <ion-label class="array-value" *ngFor="let elem of getArray(innerItem.value)">
+                          {{elem}}
+                      </ion-label>
+                  </div>
+              </div>
+            </ng-template> 
+          </ion-col>
+        </ng-template>  
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  <favourite *ngIf="isFavouriteVisible"></favourite>
+
+  <popup>
+      <p class="p-title"><b>Інформація про елемент</b></p>
+      <button class="p-confirm" (click)="addToFavourite()">Додати</button>
+      <div class="p-city">
+          <ion-label>City:</ion-label>
+          <ion-label>{{city}}</ion-label>
+      </div>
+      <br>
+      <div class="p-content" [innerHtml]="htmlElement"></div>
+  </popup>
+
+</ion-content>
+

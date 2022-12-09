@@ -1,0 +1,10 @@
+{
+  "name": "Lab_6",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,7 @@
+<div id="component-block" style="text-align:center">
+    <div class="fav-row" *ngFor="let row of favouriteRows">
+        <label class="field-name-arr">{{row.cityName}}</label>
+        <br>
+        <div [innerHtml]="row.rowData"></div>
+    </div>
+</div>

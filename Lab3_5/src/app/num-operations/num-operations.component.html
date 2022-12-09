@@ -1,0 +1,32 @@
+<div id="component-block">
+    <div id="input-block">
+        <ul>
+            <li>
+                <label>Введіть перше число:</label>
+                <input [(ngModel)]="setFirstNum" placeholder="num 1">
+            </li>
+            <li>
+                <label>Введіть друге число:</label>
+                <input [(ngModel)]="setSecondNum" placeholder="num 2">
+            </li>
+        </ul>
+    </div>
+    <div id="result-block">
+        <ul>
+            <li>
+                <h1>Сума:</h1>
+                <label>{{getSum()}}</label> 
+            </li>
+            <li>
+                <h1>Добуток:</h1> 
+                <label>{{getProduct()}}</label> 
+            </li>
+            <li>
+                <h1>Різниця:</h1>
+                <label>{{getDifference()}}</label>  
+            </li>
+        </ul>
+    </div>
+</div>
+
+

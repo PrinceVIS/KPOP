@@ -1,0 +1,8 @@
+
+<nav-header (passLabNamesEvent)="checkAndAdd($any($event))" (labChangeEvent)="resetLab($any($event))"></nav-header>
+<num-operations *ngIf="shouldMakeVisible(0)"></num-operations>
+<array-handler *ngIf="shouldMakeVisible(1)"></array-handler>
+<weather-table *ngIf="shouldMakeVisible(2)"></weather-table>
+
+
+

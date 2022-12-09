@@ -1,0 +1,18 @@
+
+<div id="component-block">
+  <div id="input-block">
+    <div id="array-init-block">
+      <label>Розмір масиву:</label>
+      <input [(ngModel)]="arraySize" type="number" value="" name="array-size"/>
+    </div>
+    <div id="array-block">
+      <input *ngFor="let elem of array, let i = index; trackBy: trackByFn" [(ngModel)]="array[i]" type="number" class="array-elem"/>
+    </div>
+  </div>
+  <div id="result-block">
+    <min-max-diff *ngIf="arraySize != 0" [min]="getMin()" [max]="getMax()"></min-max-diff>
+  </div>
+</div>
+
+
+

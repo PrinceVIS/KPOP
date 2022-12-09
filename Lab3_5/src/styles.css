@@ -1,0 +1,13 @@
+body{
+    background-image: url("assets/background.jpg");
+    background-size: 50%;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

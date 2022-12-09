@@ -1,0 +1,26 @@
+#component-block {
+    background-color: rgba(145, 145, 145, 0.624);
+    margin: 10vh 0 10vh 0;
+    padding: 4vh 4vw 4vh 4vw;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    border-style: dashed;
+    border-color: white;
+    font-weight: bold;
+    width: 50vw;
+    color: white;
+    font-size: x-large;
+}
+
+.fav-row{
+    display: flex;
+    flex-direction: column;
+    overflow-x : scroll;
+    white-space : nowrap;
+    border-style: solid;
+}
+
+.fav-row::-webkit-scrollbar {
+    display: none;
+}
